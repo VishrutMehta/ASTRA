@@ -1,0 +1,100 @@
+timestamp: 2012-10-12T00:57:03.789487
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2012-10-12T00:57:03.934813
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2012-10-12T00:57:04.021768
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2012-10-12T00:57:04.307662
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2012-10-12T00:57:04.389509
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2012-10-12T00:57:04.510559
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2012-10-12T16:25:41.082600
+CREATE TABLE kids(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user CHAR(512)
+);
+success!
+timestamp: 2012-10-14T15:11:00.477234
+ALTER TABLE kids ADD username CHAR(512) UNIQUE;
+timestamp: 2012-10-14T15:22:51.411078
+ALTER TABLE kids ADD username CHAR(512) UNIQUE;
+timestamp: 2012-10-14T15:32:18.048915
+ALTER TABLE kids ADD username CHAR(512);
+timestamp: 2012-10-14T15:34:26.427644
+ALTER TABLE kids ADD password CHAR(512);
+timestamp: 2012-10-14T15:34:26.665322
+CREATE TABLE rooms(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    rnum INTEGER UNIQUE,
+    vidurl CHAR(512)
+);
+success!
+timestamp: 2012-10-14T15:37:05.054657
+ALTER TABLE kids ADD rno INTEGER;
+timestamp: 2012-10-14T17:55:10.531709
+CREATE TABLE image(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title CHAR(512) UNIQUE,
+    file CHAR(512)
+);
+success!
+timestamp: 2012-10-15T00:30:52.974741
+ALTER TABLE rooms ADD active CHAR(1);
+timestamp: 2012-11-14T19:59:24.014109
+ALTER TABLE rooms ADD framenum INTEGER;
+timestamp: 2012-11-15T10:37:38.489388
+CREATE TABLE clips(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title CHAR(512) UNIQUE,
+    file CHAR(512)
+);
+success!
+timestamp: 2012-11-15T10:41:21.757909
+ALTER TABLE rooms ADD file CHAR(512);
+timestamp: 2012-11-15T14:32:13.084294
+ALTER TABLE rooms ADD flashfile CHAR(512);

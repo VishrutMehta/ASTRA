@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="iso-8859-1"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt">
+<head>
+<title>Canvas Sketch</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<link href="http://www.gartic.com.br/style/estilo_prototipo.css?v=1" rel="stylesheet" type="text/css" />
+<!--[if IE]>
+<style>
+#fundo {
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+}
+</style>
+<![endif]-->
+<!--[if lte IE 6]>
+<link href="http://www.gartic.com.br/style/estilo_prototipo_ie6.css?v=1" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script type="text/javascript" src="http://www.gartic.com.br/javascript/ajax_site.js?v=19"></script>
+<script type="text/javascript" src="http://www.gartic.com.br/javascript/sketch.js?v=30"></script>
+<script type="text/javascript" src="http://www.gartic.com.br/javascript/desenho-min.js?v=11"></script>
+<script type="text/javascript" src="http://www.gartic.com.br/javascript/animacao.js?v=2"></script>
+
+<style>
+#canvas {
+    float: left;
+    background-color: #FFF;
+}
+
+#canvasPrev {
+    float: left;
+    position: relative;
+    margin-top: -334px;
+    z-index: 2;
+}
+</style>
+
+<!--[if IE]>
+<script type="text/javascript" src="http://www.gartic.com.br/javascript/room_ie.js?v=2"></script>
+<![endif]-->
+
+</head>
+<body>
+<!--  -->
+<span id="carregando">Loading...</span>
+<div id="fundo"></div>
+<div id="borracha"></div>
+<div id="janela">
+    <div class="titulo">
+        <div id="janela_titulo" style="float: left">Teste</div>
+        <div style="float: right"><a href="javascript:fecharJanela()">Close</a></div>
+    </div>
+    <div id="janela_conteudo" style="padding: 4px; font-size: 10px; font-weight: normal; color: #666;">
+    </div>
+</div>
+
+<div id="tela">
+    <div id="contorno">
+        <div style="float: left;">
+            <div id="desenho" style="background-color: gray;">
+                <div id="texto_alerta"></div>
+                <div id="tit_desenho" class="titulo" style="background-color: white;">Drawing</div>
+                <div id="opcoes">
+                    <div id="opcoes_vez">
+                        <div>
+                            <div id="op_0" class="op" style="margin-bottom: 2px; background-image: url('http://www.gartic.com.br/imgs/room/op_lapis.gif');" onclick="sel_opcao(0)" title="Pencil">
+                            </div>
+                            <div id="op_1" class="op" style="margin-bottom: 2px; margin-left: 2px; background-image: url('http://www.gartic.com.br/imgs/room/op_borracha.gif');" onclick="sel_opcao(1)" title="Eraser">
+                            </div>
+                        </div>
+                        <div>
+                            <div id="op_2" class="op" style="margin-bottom: 2px; background-image: url('http://www.gartic.com.br/imgs/room/op_quadrado.gif');" onclick="sel_opcao(2)" title="Rectangle">
+                            </div>
+                            <div id="op_3" class="op" style="margin-bottom: 2px; margin-left: 2px; background-image: url('http://www.gartic.com.br/imgs/room/op_quadrado_borda.gif');" onclick="sel_opcao(3)" title="Rectangle Border">
+                            </div>
+                        </div>
+                        <div>
+                            <div id="op_4" class="op" style="margin-bottom: 2px; background-image: url('http://www.gartic.com.br/imgs/room/op_circulo.gif');" onclick="sel_opcao(4)" title="Ellipse">
+                            </div>
+                            <div id="op_5" class="op" style="margin-bottom: 2px; margin-left: 2px; background-image: url('http://www.gartic.com.br/imgs/room/op_circulo_borda.gif');" onclick="sel_opcao(5)" title="Ellipse Border">
+                            </div>
+                        </div>
+                        <div>
+                            <div id="op_6" class="op" style="margin-bottom: 2px; background-image: url('http://www.gartic.com.br/imgs/room/op_linha.gif');" onclick="sel_opcao(6)" title="Line">
+                            </div>
+                            <div id="op_7" class="op" style="margin-bottom: 2px; margin-left: 2px; background-image: url('http://www.gartic.com.br/imgs/room/op_balde.gif');" onclick="sel_opcao(7)" title="Flood Fill">
+                            </div>
+                        </div>
+                        <div>
+                            <div id="op_8" class="op" style="margin-bottom: 2px; background-image: url('http://www.gartic.com.br/imgs/room/op_piker.gif');" onclick="sel_opcao(8)" title="Color Picker">
+                            </div>
+                            <div id="novo" class="op" style="margin-bottom: 2px; margin-left: 2px; background-image: url('http://www.gartic.com.br/imgs/room/op_nova.gif');" onclick="sel_limpar()" title="Clear">
+                            </div>
+                        </div>
+                        <div>
+                            <div id="op_desfazer" class="op" style="margin-bottom: 2px; background-image: url('http://www.gartic.com.br/imgs/room/op_desfazer.gif'); background-color: #CCC;" onclick="sel_desfazer()" title="Undo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="telaCanvas" style="float: right; line-height: 0; width: 501px; height: 334px; overflow: auto;">
+                    <div id="areaCanvas" style="width: 501px; position: relative;">
+                        <canvas id="canvas" width="501" height="334"></canvas>
+                        <canvas id="canvasPrev" width="501" height="334"></canvas>
+                    </div>
+                </div>
+                <div id="cores">
+                    <div id="dica_dada"></div>
+                    <div id="cores_vez">
+                        <div id="cor_escolhida" class="op" style="border-color: black; float: left; background-color: #000;" title="Selected Color"></div>
+                        <div style="float: left;">
+                            <div>
+                                <div class="cor" style="background-color: #000;" onclick="sel_cor(1)"></div>
+                                <div class="cor" style="background-color: #666;" onclick="sel_cor(2)"></div>
+                                <div class="cor" style="background-color: #8b0000;" onclick="sel_cor(3)"></div>
+                                <div class="cor" style="background-color: #008b00;" onclick="sel_cor(4)"></div>
+                                <div class="cor" style="background-color: #00008b;" onclick="sel_cor(5)"></div>
+                                <div class="cor" style="background-color: #008b8b;" onclick="sel_cor(6)"></div>
+                                <div class="cor" style="background-color: #8b8b00;" onclick="sel_cor(7)"></div>
+                                <div class="cor" style="background-color: #8B4500;" onclick="sel_cor(8)"></div>
+                                <div class="cor" style="background-color: #8B0A50;" onclick="sel_cor(9)"></div>
+                                <div class="cor" style="background-color: #551A8B;" onclick="sel_cor(10)"></div>
+                                <div class="cor" style="background-color: #548B54;" onclick="sel_cor(11)"></div>
+                                <div class="cor" style="background-color: #8B6969;" onclick="sel_cor(12)"></div>
+                                <div class="cor" style="background-color: #8B7B8B;" onclick="sel_cor(13)"></div>
+                            </div>
+                            <div style="clear: both;">
+                                <div class="cor" style="margin-top: 2px; background-color: #fff;" onclick="sel_cor(14)"></div>
+                                <div class="cor" style="margin-top: 2px; background-color: #ccc;" onclick="sel_cor(15)"></div>
+                                <div class="cor" style="margin-top: 2px; background-color: #ff0000;" onclick="sel_cor(16)"></div>
+                                <div class="cor" style="margin-top: 2px; background-color: #00ff00;" onclick="sel_cor(17)"></div>
+                                <div class="cor" style="margin-top: 2px; background-color: #0000ff;" onclick="sel_cor(18)"></div>
+                                <div class="cor" style="margin-top: 2px; background-color: #00ffff;" onclick="sel_cor(19)"></div>
+                                <div class="cor" style="margin-top: 2px; background-color: #ffff00;" onclick="sel_cor(20)"></div>
+                                <div class="cor" style="margin-top: 2px; background-color: #FF7F00;" onclick="sel_cor(21)"></div>
+                                <div class="cor" style="margin-top: 2px; background-color: #FF1493;" onclick="sel_cor(22)"></div>
+                                <div class="cor" style="margin-top: 2px; background-color: #9B30FF;" onclick="sel_cor(23)"></div>
+                                <div class="cor" style="margin-top: 2px; background-color: #9AFF9A;" onclick="sel_cor(24)"></div>
+                                <div class="cor" style="margin-top: 2px; background-color: #FFC1C1;" onclick="sel_cor(25)"></div>
+                                <div class="cor" style="margin-top: 2px; background-color: #FFE1FF;" onclick="sel_cor(26)"></div>
+                            </div>
+                        </div>
+                        <div id="op_larg10" class="op" style="margin-left: 2px; float: right; background-image: url('http://www.gartic.com.br/imgs/room/op_larg10.gif');" onclick="sel_largura(10)" title="Weight 10"></div>
+                        <div id="op_larg8" class="op" style="margin-left: 2px; float: right; background-image: url('http://www.gartic.com.br/imgs/room/op_larg8.gif');" onclick="sel_largura(8)" title="Weight 8"></div>
+                        <div id="op_larg6" class="op" style="margin-left: 2px; float: right; background-image: url('http://www.gartic.com.br/imgs/room/op_larg6.gif');" onclick="sel_largura(6)" title="Weight 6"></div>
+                        <div id="op_larg4" class="op" style="margin-left: 2px; float: right; background-image: url('http://www.gartic.com.br/imgs/room/op_larg4.gif');" onclick="sel_largura(4)" title="Weight 4"></div>
+                        <div id="op_larg2" class="op" style="margin-left: 2px; float: right; background-image: url('http://www.gartic.com.br/imgs/room/op_larg2.gif');" onclick="sel_largura(2)" title="Weight 2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="float: left;">
+            <div class="borda">
+                <div id="tit_desenho" class="titulo">Animation</div>
+                <div style="padding: 5px; height: 42px;">
+                    <ul id="iniciarAni" class="lista">
+                        <li><a href="#" onclick="ani.iniciar(1); return false;">Start</a></li>
+                    </ul>
+
+                    <ul id="pararAni" class="lista" style="display: none;">
+                        <li><a href="#" onclick="ani.pausar(); return false;">Pause</a></li>
+                        <li><a href="#" onclick="ani.parar(); return false;">Stop</a></li>
+                    </ul>
+
+                    <ul id="continuarAni" class="lista" style="display: none;">
+                        <li><a href="#" onclick="ani.continuar(); return false;">Continuar anima&ccedil;&atilde;o</a></li>
+                        <li><a href="#" onclick="ani.parar(); return false;">Parar anima&ccedil;&atilde;o</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="borda">
+                <div id="tit_desenho" class="titulo">Options</div>
+                <div style="padding: 5px; height: 83px; overflow: auto;">
+                    <ul class="lista">
+                        <li><a href="#" onclick="dimensao(); return false;">Attributes</a></li>
+                        <li><a href="#" onclick="salvaDesenho(0); return false;">Save as PNG</a></li>
+                        <li><a href="#" onclick="salvaDesenho(1); return false;">Save as JPG</a></li>
+                        <li><a href="#" onclick="salvaDesenho(2); return false;">Save as GIF</a></li>
+                        <li><a href="http://m.gartic.com/idraw/">iPhone version</a></li>
+                        <li><a href="http://www.gartic.net/">Drawing game</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-3906902-7");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</body>
+</html>

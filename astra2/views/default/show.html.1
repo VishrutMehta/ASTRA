@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ASTRA</title>
+<link href="/astra2/static/INTERACTIVE.CSS" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/astra2/static/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/astra2/static/interactive.js"></script>
+
+
+</head>
+<div align="right">
+<button type="button" onclick="document.location='{{=URL("logout")}}'">Logout</button>
+</div>
+<body class="photo_container">
+
+
+ <!-- <div > 
+ <a class="Play" style="left: 320px; top: 100px;"></a>
+<a class="Pause" style="left: 390px; top: 100px;"></a>
+<a class="Stop" style="left: 470px; top: 100px;"></a> -->
+
+<a class="media_containers" >
+{{xxx=db(db.kids.username==session.username).select().first().rno}}
+{{if xxx==None:}}
+<img src="/astra1/static/hh.jpeg" width="640" height="480"> </img>
+{{else:}}
+{{vid=db(db.rooms.rnum==xxx).select().first().vidurl}}
+<video width="640" height="400" controls="controls">  
+        <source src="{{=URL('static', vid+'.ogv')}}" type="video/ogg">
+</video>
+{{pass}}</a>
+
+<div class="members_containers">All members
+{{xxx=db(db.kids.username==session.username).select().first().rno}}
+{{if xxx==None:}}
+{{else:}}
+{{for mate in db(db.kids.rno==xxx and db.kids.username!=session.username).select():}}
+<p>{{=mate.username}}</p>
+{{pass}}
+{{pass}}
+</div>
+
+<div class="story_containers">virtual rooms</br>
+{{for row in db(db.rooms.active==True).select(orderby=db.rooms.rnum):}}
+<a href={{=URL('enter', args=row.rnum)}}>{{=row.rnum}}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{{pass}}</div>
+<!--<a class="home" style="left: 67px; top: 15px;"></a>
+  <a class="duck" style="right: 126px; top: 207px;"></a>
+  <a class="poo" style="right: 871px; bottom: 77px;"></a>
+<a class="horse" style="left: 350px; bottom: -190px;"></a>-->
+
+
+</div>
+<!--<button onclick="hide()" class="play">Play</button> 
+<button onckick="unhide()" class="play1">Pause</button>-->
+
+</body>
+
+{{=BEAUTIFY(response._vars)}}
+</html>

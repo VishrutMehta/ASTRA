@@ -1,0 +1,238 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+
+    background-image: url('/astra2/static/Fantasy-Wallpapers-34.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin:15px auto;
+    width: 100%;
+}
+
+.photo_container {
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 18px;
+    background: white url('/astra2/static/Kids-Desktop-Background.jpg') center top no-repeat;
+    width: 100%;
+    margin:0px auto;
+    border:3px solid black;
+}
+.page-body{
+            backgroundImage: url('/astra2/static/Kids-Desktop-Background.jpg');
+            backgroundRepeat: no-repeat;
+            backgroundPosition: top center;
+};
+.joking {
+    margin-top:170px;
+    margin-right:120px;
+    background-image: url('/astra2/static/Fantasy-Wallpapers-35.jpg');
+    border:3px solid black;
+    float:right;    
+    height: 50px;   
+    width: 50px;
+    
+}
+a.media_containers:hover {
+    cursor: pointer;
+    background-position: 0px 0px;
+}
+a.story_containers:hover {
+    cursor: pointer;
+    background-position: 0px 0px;
+}
+a.Stop:hover {
+    cursor: pointer;
+    background-position: 0px 0px;
+}
+
+
+
+.members_containers {
+    margin-top:100px;
+    margin-right:100px;
+    border:1px solid black;
+    float:right;    
+    height: 470px;  
+    width: 150px;
+    background-color:rgba(100,100,100,0.3);
+}
+.story_containers {
+    
+    margin-top:100px;
+    margin-left:100px;
+    border:1px solid black;
+    float:left; 
+    height: 470px;  
+    width: 150px;
+    background-color:rgba(100,100,100,0.3);
+}
+.story_containers2 {
+    float :left;
+    border:0px solid black;
+    height: 130px;
+    width: 743px;
+    overflow:auto;
+width:100px;
+    background-color:rgba(200,150,50,0.3);
+    zindex:1;
+    position:relative;
+    top:150px;
+    left:30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.media_containers {
+    //border:1px solid black;
+    //font-family: "Arial Black", Gadget, sans-serif;
+    //font-size: 18px;
+    background-image: url('astra2/static/Fantasy-Wallpapers-35.jpg');
+    //background-repeat: no-repeat;
+    //background-position: 0px 0px;
+    //padding: 0px;
+    //float: right;
+    //height: 400px;
+    //width:  640px;
+    //margin: 0px;
+    //position: absolute;
+    height: 400px;
+    width: 640px;
+    position: absolute;
+    left: 370px;
+    top: 150px;
+}
+
+
+
+    
+
+
+
+
+a.poo {
+    background-image: url('/astra2/static/new3.png');
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    display: block;
+    height: 230px;
+    width: 270px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    position: absolute;
+}
+a.horse {
+    background-image: url('/astra2/static/new4.png');
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    display: block;
+    height: 72%;
+    width: 77%;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    position: absolute;
+}
+a.House {
+    background-image: url('/astra2/static/Fantasy-Wallpapers-34.png');
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    display: block;
+    height: 400px;
+    width: 640px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    position: absolute;
+}
+
+
+h1,h2,h3,p
+{
+    text-align:center;
+    color:#FFFFFF;
+    font-family:"tahoma","Arial","Sans-serif";
+}
+h2.custom
+{
+    margin-top:0px;
+    margin-bottom:0px;
+}
+
+table.format
+{
+    /*
+    border-style:solid;
+    border-width:1px;
+    border-color:white;
+    */
+
+    border-style:solid;
+    border-width:0px;
+    border-color:white;
+    margin-left:auto;
+    margin-right:auto;
+    height:130px;
+    width:150px;
+    padding=0px;
+}
+td.format
+{
+    border-style:solid;
+    border-width:0px;
+    border-color:white;
+    margin-left:auto;
+    margin-right:auto;
+    height:100px;
+    width:100px;
+    padding=0;
+}
+
+div.txt
+{
+    z-index:1;
+    position:relative;
+    width:100%;
+    text-color:red;
+}
+div.full
+{
+    position:relative;
+    width:100%;
+    height:100%;
+}
+div.txt:hover
+{
+    z-index:1;
+    position:relative;
+    text-align:center;
+    width:100%;
+}
+
+.link img{
+    height:130px;
+    padding:0;
+    margin:0;
+    float:left;
+    opacity:0.5;
+}
+.link img:hover{
+    opacity:1;
+}

@@ -1,0 +1,19 @@
+(dp1
+S'output'
+p2
+S''
+sS'layer'
+p3
+S'Framework'
+p4
+sS'code'
+p5
+S''
+sS'snapshot'
+p6
+(dp7
+sS'traceback'
+p8
+S'Traceback (most recent call last):\n  File "/home/vishrut/web2py/gluon/main.py", line 528, in wsgibase\n    session._try_store_on_disk(request, response)\n  File "/home/vishrut/web2py/gluon/globals.py", line 594, in _try_store_on_disk\n    cPickle.dump(dict(self), response.session_file)\n  File "/usr/lib/python2.7/copy_reg.py", line 74, in _reduce_ex\n    getstate = self.__getstate__\n  File "/home/vishrut/web2py/gluon/dal.py", line 6774, in __getattr__\n    return self[key]\n  File "/home/vishrut/web2py/gluon/dal.py", line 6714, in __getitem__\n    return dict.__getitem__(self, str(key))\nKeyError: \'__getstate__\'\n'
+p9
+s.
